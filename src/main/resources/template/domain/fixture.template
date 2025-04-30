@@ -1,0 +1,8 @@
+package {package_prefix}.fixture.domain.{domain_group}.{domain}.api;
+
+@JavaFactoryClass(
+        javaFactoryClassType = JavaFactoryClassType.DOMAIN_API_FIXTURE,
+        group = "{group}",
+)
+public class Default{Domain}{Role}TestFixture {
+}

@@ -1,0 +1,14 @@
+package {package_prefix}.infra.{entity_group}.{entity}.api;
+
+import {package_prefix}.infra.{entity_group}.{entity}.{Entity};
+
+@JavaFactoryClass(
+        javaFactoryClassType = JavaFactoryClassType.INFRA_REPOSITORY,
+        referencedData = {{Entity}.class},
+        referencedApi = {},
+        group = "{group}"
+)
+public interface I{Entity}Repository {
+    // 도메인 계층에서 사용하는 레포지토리 인터페이스입니다.
+    // TODO: define methods you needed
+}

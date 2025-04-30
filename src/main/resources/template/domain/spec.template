@@ -1,0 +1,9 @@
+package {package_prefix}.domain.{domain_group}.{domain}.spec;
+
+
+@JavaFactoryData(
+  referencedData = {}
+)
+public class {Domain} {
+    // TODO: define fields and methods
+}

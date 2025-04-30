@@ -1,0 +1,8 @@
+package {package_prefix}.domain.{domain_group}.{domain}.api;
+
+@JavaFactoryClass(
+        javaFactoryClassType = JavaFactoryClassType.DOMAIN_API_IMPL,
+        group = "{group}"
+)
+public class Default{Domain}{Role} {
+}

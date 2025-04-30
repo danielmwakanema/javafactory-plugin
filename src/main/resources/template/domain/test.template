@@ -1,0 +1,11 @@
+package {package_prefix}.domain.{domain_group}.{domain}.api;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@JavaFactoryClass(
+        javaFactoryClassType = JavaFactoryClassType.DOMAIN_API_TEST,
+        group = "{group}"
+)
+class Default{Domain}{Role}Test {
+
+}

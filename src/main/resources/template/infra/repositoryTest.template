@@ -1,0 +1,18 @@
+package {package_prefix}.infra.{entity_group}.{entity}.api;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+
+
+@DataJpaTest
+@JavaFactoryClass (
+        javaFactoryClassType = JavaFactoryClassType.INFRA_REPOSITORY_TEST,
+        group = "{group}"
+)
+class {Entity}RepositoryTest {
+
+    @Test
+    void test_behavior() {
+        // TODO: implement tests
+    }
+}

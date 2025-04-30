@@ -1,0 +1,23 @@
+package {package_prefix}.infra.{entity_group}.{entity};
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "{table_name}")
+@JavaFactoryData(
+        referencedData = {},
+        referencedClass= {}
+)
+public class {Entity} {
+
+    // NoArgsConstructor for jpa entity
+    public {Entity}() {
+    }
+
+    @Id
+    @GeneratedValue
+    private Long id;
+}

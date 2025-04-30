@@ -1,0 +1,13 @@
+package {package_prefix}.domain.{domain_group}.{domain}.api;
+
+import {package_prefix}.domain.{domain_group}.{domain}.spec.{Domain};
+
+
+@JavaFactoryClass(
+        javaFactoryClassType = JavaFactoryClassType.DOMAIN_API,
+        referencedData = {{Domain}.class},
+        referencedApi = {},
+        group = "{group}"
+)
+public interface {Domain}{Role} {
+}

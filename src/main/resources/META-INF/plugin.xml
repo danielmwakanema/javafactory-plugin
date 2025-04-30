@@ -1,0 +1,33 @@
+<idea-plugin>
+    <id>io.github.javafactoryplugindev.plugin</id>
+    <name>JavaFactory</name>
+    <vendor email="java.factory.plugin.dev@gmail.com" url="https://github.com/JavaFactoryPluginDev">JavaFactory Team</vendor>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.java</depends>
+
+    <resource-bundle>messages.MyBundle</resource-bundle>
+
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow
+                id="JavaFactory"
+                factoryClass="io.github.javafactoryplugindev.plugin.toolWindow.MyToolWindowFactory"
+                anchor="right"
+                canCloseContent="true"
+        />
+        <projectService serviceImplementation="io.github.javafactoryplugindev.plugin.openai.storage.OpenAiKeyStorage" />
+    </extensions>
+
+    <actions>
+        <action id="OpenCodeGenPanel"
+                class="io.github.javafactoryplugindev.plugin.actions.OpenCodeGenPanelAction"
+                text="JavaFactory: Code Generation"
+                description="JavaFactory | Open Code GenerationPanel">
+            <!-- Project View -->
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+            <!-- Editor 우클릭 -->
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>
