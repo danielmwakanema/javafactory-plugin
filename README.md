@@ -70,6 +70,6 @@ Go to the plugin settings menu and register your API key.
 
 ## Other details 
 
-- [Link: Collecting Referenced Classes]()
+- [Link: Collecting Referenced Classes](https://github.com/JavaFactoryPluginDev/javafactory-plugin/blob/master/docs/crawl_java_files.md)
 
-- [Link: Managing Patterns]()
+- [Link: Managing Patterns](https://github.com/JavaFactoryPluginDev/javafactory-plugin/blob/master/docs/patterns.md)
