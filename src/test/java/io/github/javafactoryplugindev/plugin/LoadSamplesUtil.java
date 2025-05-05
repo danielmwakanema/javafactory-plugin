@@ -16,7 +16,7 @@ public class LoadSamplesUtil {
     public static Map<String, PsiClass> loadTestSources(CodeInsightTestFixture fixture) throws IOException {
         Map<String, PsiClass> result = new HashMap<>();
 
-        Path sampleRoot = Paths.get("src/test/java/com/github/javafactorydev/plugin/testData");
+        Path sampleRoot = Paths.get("src/test/java/io/github/javafactoryplugindev/plugin/testData");
 
         Files.walk(sampleRoot)
                 .filter(path -> path.toString().endsWith(".java"))
@@ -24,14 +24,14 @@ public class LoadSamplesUtil {
                     try {
                         String relativePath = sampleRoot.relativize(file).toString();
                         String packagePath = relativePath.replace("\\", "/").replace(".java", "");
-                        String packageName = "com.github.javafactorydev.plugin.testData." + packagePath.replace('/', '.');
+                        String packageName = "io.github.javafactoryplugindev.plugin.testData." + packagePath.replace('/', '.');
                         String className = packagePath.substring(packagePath.lastIndexOf('/') + 1);
 
                         String content = Files.readString(file);
 
                         // ✅ 이때 src/test/java 생략하고 등록
                         PsiFile psiFile = fixture.addFileToProject(
-                                "io/github/javafactorydev/plugin/testData/" + relativePath.replace("\\", "/"),
+                                "io/github/javafactoryplugindev/plugin/testData/" + relativePath.replace("\\", "/"),
                                 content
                         );
                         PsiClass psiClass = ((PsiClassOwner) psiFile).getClasses()[0];

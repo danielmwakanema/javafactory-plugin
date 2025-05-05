@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "io.github.javafactoryplugindev"
-version = "0.0.1"
+version = "0.0.11"
 
 repositories {
     mavenCentral()

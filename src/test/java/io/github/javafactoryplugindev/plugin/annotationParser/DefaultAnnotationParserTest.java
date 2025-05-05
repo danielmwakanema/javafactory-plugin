@@ -25,7 +25,7 @@ public class DefaultAnnotationParserTest extends BasePlatformTestCase {
         JavaPsiFacade facade = JavaPsiFacade.getInstance(project);
         GlobalSearchScope scope = GlobalSearchScope.projectScope(project);
 
-        PsiClass psiClass = facade.findClass("com.github.javafactorydev.plugin.testData.FooApi", scope);
+        PsiClass psiClass = facade.findClass("io.github.javafactoryplugindev.plugin.testData.FooApi", scope);
 
         assertNotNull("FooApi 클래스를 찾아야 한다", psiClass);
 
@@ -52,7 +52,7 @@ public class DefaultAnnotationParserTest extends BasePlatformTestCase {
         JavaPsiFacade facade = JavaPsiFacade.getInstance(project);
         GlobalSearchScope scope = GlobalSearchScope.projectScope(project);
 
-        PsiClass psiClass = facade.findClass("com.github.javafactorydev.plugin.testData.NormalData", scope);
+        PsiClass psiClass = facade.findClass("io.github.javafactoryplugindev.plugin.testData.NormalData", scope);
 
         assertNotNull("NormalData 클래스를 찾아야 한다", psiClass);
 
@@ -73,7 +73,7 @@ public class DefaultAnnotationParserTest extends BasePlatformTestCase {
         JavaPsiFacade facade = JavaPsiFacade.getInstance(project);
         GlobalSearchScope scope = GlobalSearchScope.projectScope(project);
 
-        PsiClass psiClass = facade.findClass("com.github.javafactorydev.plugin.testData.RecursiveDataA", scope);
+        PsiClass psiClass = facade.findClass("io.github.javafactoryplugindev.plugin.testData.RecursiveDataA", scope);
 
         assertNotNull("RecursiveDataA 클래스를 찾아야 한다", psiClass);
 
@@ -91,7 +91,7 @@ public class DefaultAnnotationParserTest extends BasePlatformTestCase {
         JavaPsiFacade facade = JavaPsiFacade.getInstance(project);
         GlobalSearchScope scope = GlobalSearchScope.projectScope(project);
 
-        PsiClass psiClass = facade.findClass("com.github.javafactorydev.plugin.testData.NoAnnotation", scope);
+        PsiClass psiClass = facade.findClass("io.github.javafactoryplugindev.plugin.testData.NoAnnotation", scope);
 
         assertNotNull("NoAnnotation 클래스를 찾아야 한다", psiClass);
 
@@ -115,7 +115,7 @@ public class DefaultAnnotationParserTest extends BasePlatformTestCase {
         JavaPsiFacade facade = JavaPsiFacade.getInstance(project);
         GlobalSearchScope scope = GlobalSearchScope.projectScope(project);
 
-        PsiClass psiClass = facade.findClass("com.github.javafactorydev.plugin.testData.FooApi", scope);
+        PsiClass psiClass = facade.findClass("io.github.javafactoryplugindev.plugin.testData.FooApi", scope);
 
         assertNotNull("FooApi 클래스를 찾아야 한다", psiClass);
 
