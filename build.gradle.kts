@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "io.github.javafactoryplugindev"
-version = "0.0.11"
+version = "0.0.13"
 
 repositories {
     mavenCentral()
@@ -39,7 +39,7 @@ tasks {
 
     patchPluginXml {
         sinceBuild.set("241")  // 버전도 맞춰주고
-        untilBuild.set("249.*")
+        untilBuild.set("251.*")
     }
 
     withType<JavaCompile> {

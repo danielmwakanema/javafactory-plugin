@@ -5,8 +5,89 @@
     </vendor>
 
     <description><![CDATA[
-    JavaFactory is an IntelliJ plugin that automates the generation of repetitive code in Java/Kotlin projects.
-    Using LLM-based automation, it enables developers to define reusable patterns and generate code accordingly.
+<h1>JavaFactory</h1>
+
+<p>JavaFactory is an LLM-powered IntelliJ plugin that automates code generation from reusable patterns.</p>
+
+<p>JavaFactory eliminates repetitive manual coding tasks. By defining clear patterns and referencing source components with annotations, you can generate fully functional implementation, test, and fixture code directly inside your IDE.</p>
+
+<hr />
+
+<h2>🚀 Speed up your development workflow</h2>
+
+<p>JavaFactory lets you:</p>
+
+<ul>
+<li>Define reusable <strong>patterns</strong> that describe how a certain type of code should be generated (e.g., test, repository, service).</li>
+<li>Use custom <strong>annotations</strong> (<code>@JavaFactoryApi</code>, <code>@JavaFactoryData</code>, <code>@JavaFactoryPattern</code>) to declare what classes should be referenced during generation.</li>
+<li>Automatically generate production-grade code (impl, test, fixture) with a single click.</li>
+</ul>
+
+<hr />
+
+<h2>🔧 Features</h2>
+
+<h3>1. Pattern</h3>
+
+<p>Define your repeatable code logic in natural language.</p>
+
+<ul>
+<li>Structure your instructions into: <code>goal</code>, <code>rules</code>, <code>output</code>, and <code>example</code>.</li>
+<li>Specify the shape of the prompt using key-value structure for user input (e.g., <code>&lt;&lt; API INTERFACE &gt;&gt;</code>).</li>
+</ul>
+
+<h3>2. Reference Annotation</h3>
+
+<p>Guide the LLM with exactly what classes to include during code generation.</p>
+
+<ul>
+<li>Use <code>@JavaFactoryApi</code>, <code>@JavaFactoryData</code> to annotate interfaces and data models.</li>
+<li>References are collected and inserted into prompts based on your rules (e.g., depth 1 for API, recursive for data).</li>
+</ul>
+
+<h3>3. Auto Generation</h3>
+
+<p>Once you define a pattern and annotate your codebase:</p>
+
+<ul>
+<li>Right-click a target file and select “Generate...”</li>
+<li>JavaFactory builds the prompt and runs the LLM.</li>
+<li>You get complete code: no stubs, no guessing.</li>
+</ul>
+
+<hr />
+
+<h2>💡 Predictable Results, Customizable Logic</h2>
+
+<ul>
+<li>JavaFactory does not generate boilerplate.</li>
+<li>You control how code is created, what rules are followed, and what inputs are provided.</li>
+<li>Once defined, patterns can be reused across files, teams, or entire projects.</li>
+</ul>
+
+<hr />
+
+<h2>✅ Supported Languages</h2>
+
+<ul>
+<li>Java</li>
+<li>Kotlin</li>
+</ul>
+
+<hr />
+
+<h2>📌 Make Patterns Once, Use Many Times</h2>
+
+<p>Define a pattern once, apply it to hundreds of files.
+You’ll never write the same rules of unit test or repository interface twice.</p>
+
+<h2>Additional Documentation</h2>
+<ul>
+  <li><a href="https://github.com/JavaFactoryPluginDev/javafactory-plugin/blob/master/docs/crawl_java_files.md" target="_blank">Collecting Referenced Classes</a></li>
+  <li><a href="https://github.com/JavaFactoryPluginDev/javafactory-plugin/blob/master/docs/patterns.md" target="_blank">Managing Patterns</a></li>
+  <li><a href="https://github.com/JavaFactoryPluginDev/javafactory-plugin/blob/master/docs/usage_example.md" target="_blank">Usage examples</a></li>
+</ul>
+
 ]]></description>
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.java</depends>
