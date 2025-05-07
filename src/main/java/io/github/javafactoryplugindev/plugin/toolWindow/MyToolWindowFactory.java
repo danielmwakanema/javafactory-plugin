@@ -2,7 +2,6 @@ package io.github.javafactoryplugindev.plugin.toolWindow;
 
 
 import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.platform.feedback.impl.state.DontShowAgainFeedbackState;
 import io.github.javafactoryplugindev.plugin.ui.BaseToolWindow;
 import io.github.javafactoryplugindev.plugin.ui.CodeGenerationGuidePanel;
 import io.github.javafactoryplugindev.plugin.ui.LobbyPanel;

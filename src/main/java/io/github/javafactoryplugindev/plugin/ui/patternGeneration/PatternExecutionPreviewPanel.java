@@ -7,6 +7,7 @@ import io.github.javafactoryplugindev.plugin.openai.MdCleaner;
 
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiClass;
+import io.github.javafactoryplugindev.plugin.openai.OpenAiCallFailedException;
 import io.github.javafactoryplugindev.plugin.pattern.GenerationType;
 import io.github.javafactoryplugindev.plugin.pattern.Pattern;
 import io.github.javafactoryplugindev.plugin.pattern.PromptRenderUtils;
@@ -21,6 +22,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static io.github.javafactoryplugindev.plugin.openai.OpenAiCallFailedException.ErrorType.KEY_FAILED;
+import static io.github.javafactoryplugindev.plugin.openai.OpenAiCallFailedException.ErrorType.KEY_MISSING;
 
 /*
  * TODO
@@ -209,6 +213,13 @@ public class PatternExecutionPreviewPanel extends JPanel {
         return button;
     }
 
+    private void showDialogLater(String message, String title) {
+        SwingUtilities.invokeLater(() ->
+                JOptionPane.showMessageDialog(this, message, title, JOptionPane.ERROR_MESSAGE)
+        );
+    }
+
+
     private void startSequentialPreview() {
         isRunning = true; // 🔵 시작할 때 true로
         SwingWorker<Void, Integer> worker = new SwingWorker<>() {
@@ -232,8 +243,20 @@ public class PatternExecutionPreviewPanel extends JPanel {
                         throw new RuntimeException(e);
                     }
                     // 실제 LLM 호출 (오래 걸리는 작업)
-                    String generatedCode = MdCleaner.cleanJavaCode(callCodeGeneration(sys, user));
-                    updateGeneratedSources(pattern, generatedCode);
+
+                    String generatedCode = null;
+                    try {
+                        generatedCode = MdCleaner.cleanJavaCode(callCodeGeneration(sys, user));
+                    } catch (OpenAiCallFailedException ex) {
+                        showDialogLater(switch (ex.getErrorType()) {
+                            case KEY_FAILED -> "❗ " + ex.getMessage();
+                            case KEY_MISSING -> "❗" + ex.getMessage();
+                            default -> "⚠️ " +  ex.getMessage();
+                        }, "OpenAi call failed");
+                        break;
+                    }
+                    String mdCleaned = MdCleaner.cleanJavaCode(generatedCode);
+                    updateGeneratedSources(pattern, mdCleaned);
 
                     int finalI = i;
                     SwingUtilities.invokeLater(() -> {
@@ -242,12 +265,12 @@ public class PatternExecutionPreviewPanel extends JPanel {
                         var showPromptButton = showPromptButtons.get(finalI);
                         var pathField = pathFields.get(finalI);
 
-                        area.setText(generatedCode);
+                        area.setText(mdCleaned);
 
                         if (Boolean.TRUE.equals(canGuessPath(targetInterface, pattern))) {
                             String guessedPath = guessPath(targetInterface, pattern);
                             pathField.setText("path: " + guessedPath);
-                            if(guessedPath != null && !guessedPath.isBlank())
+                            if (guessedPath != null && !guessedPath.isBlank())
                                 saveButton.setEnabled(true);
                         } else {
                             pathField.setText("If the pattern has a GenerationType, a generation path can be suggested.");

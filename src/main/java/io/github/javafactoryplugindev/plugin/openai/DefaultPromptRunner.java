@@ -1,6 +1,7 @@
 package io.github.javafactoryplugindev.plugin.openai;
 
 
+import com.openai.errors.UnauthorizedException;
 import io.github.javafactoryplugindev.plugin.openai.storage.OpenAiKeyStorage;
 import com.intellij.openapi.project.Project;
 import com.openai.client.OpenAIClient;
@@ -14,7 +15,7 @@ public class DefaultPromptRunner implements PromptRunner {
     private static DefaultPromptRunner INSTANCE = new DefaultPromptRunner();
 
     public static PromptRunner getInstance() {
-        if(INSTANCE == null)
+        if (INSTANCE == null)
             INSTANCE = new DefaultPromptRunner();
 
         return INSTANCE;
@@ -45,9 +46,12 @@ public class DefaultPromptRunner implements PromptRunner {
 
             System.out.println("generated = \n" + content.get());
             return content.get();
-        }catch (Exception e){
+        } catch (UnauthorizedException e) {
             e.printStackTrace();
-            throw  new OpenAiCallFailedException(" Failed to call openAi, you should check your key or  ");
+            throw new OpenAiCallFailedException(" Incorrect API key provided, You can find your API key at https://platform.openai.com/account/api-keys. ", OpenAiCallFailedException.ErrorType.KEY_FAILED);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new OpenAiCallFailedException(" Unexpected error occurred. Please try again later. ");
         }
 
     }

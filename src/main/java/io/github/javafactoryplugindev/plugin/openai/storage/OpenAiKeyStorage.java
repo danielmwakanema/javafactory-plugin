@@ -1,6 +1,8 @@
 package io.github.javafactoryplugindev.plugin.openai.storage;
 
 
+import com.intellij.configurationStore.StateStorageManager;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
@@ -29,6 +31,7 @@ public class OpenAiKeyStorage implements PersistentStateComponent<OpenAiKey> {
     public void saveKey(String rawKey) {
         KeyEncoder encoder = new KeyEncoder();
         state.setEncoded(encoder.encode(rawKey));
+
     }
 
     public String getDecodedKey() {

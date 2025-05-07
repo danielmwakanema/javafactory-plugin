@@ -1,5 +1,8 @@
 package io.github.javafactoryplugindev.plugin.openai.storage;
 
+import com.intellij.util.xmlb.annotations.Tag;
+
+@Tag("OpenAiKey")
 public class OpenAiKey {
     private String encoded;
 
