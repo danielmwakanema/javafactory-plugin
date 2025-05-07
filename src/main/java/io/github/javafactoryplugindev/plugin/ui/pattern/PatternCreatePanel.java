@@ -225,7 +225,34 @@ public class PatternCreatePanel extends BaseToolWindow {
         JLabel leftLabel = new JLabel("Item:");
         JTextField flagField = new JTextField(defaultKey, 10); // 기본 key 세팅
         flagField.setMaximumSize(new Dimension(150, 30));
+        flagField.setEditable(true);
         JLabel rightLabel = new JLabel("Value:");
+
+        JPanel leftPanel = new JPanel();
+        leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.X_AXIS));
+        leftPanel.add(leftLabel);
+        leftPanel.add(Box.createHorizontalStrut(5));
+        leftPanel.add(flagField);
+        leftPanel.add(Box.createHorizontalStrut(5));
+        leftPanel.add(rightLabel);
+
+
+        flagInputRow.add(leftPanel, BorderLayout.WEST);
+
+
+        JPanel checkPanel = new JPanel(new GridLayout(0, 3, 10, 5));
+        List<JCheckBox> boxGroup = new ArrayList<>();
+        for (ReferenceFlag rf : ReferenceFlag.values()) {
+            JCheckBox cb = new JCheckBox(rf.name());
+            if (selectedFlags.contains(rf)) { // 선택된 플래그 체크
+                cb.setSelected(true);
+            }
+            cb.setEnabled(true);
+            checkPanel.add(cb);
+            boxGroup.add(cb);
+        }
+
+
         JButton removeButton = new JButton("Delete");
         removeButton.addActionListener(e -> {
             int index = flagRows.indexOf(flagRow);
@@ -237,27 +264,7 @@ public class PatternCreatePanel extends BaseToolWindow {
             userPromptPanel.repaint();
         });
 
-        JPanel leftPanel = new JPanel();
-        leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.X_AXIS));
-        leftPanel.add(leftLabel);
-        leftPanel.add(Box.createHorizontalStrut(5));
-        leftPanel.add(flagField);
-        leftPanel.add(Box.createHorizontalStrut(5));
-        leftPanel.add(rightLabel);
-
         flagInputRow.add(leftPanel, BorderLayout.WEST);
-        flagInputRow.add(removeButton, BorderLayout.EAST);
-
-        JPanel checkPanel = new JPanel(new GridLayout(0, 3, 10, 5));
-        List<JCheckBox> boxGroup = new ArrayList<>();
-        for (ReferenceFlag rf : ReferenceFlag.values()) {
-            JCheckBox cb = new JCheckBox(rf.name());
-            if (selectedFlags.contains(rf)) { // 선택된 플래그 체크
-                cb.setSelected(true);
-            }
-            checkPanel.add(cb);
-            boxGroup.add(cb);
-        }
 
         flagRow.add(flagInputRow);
         flagRow.add(checkPanel);
@@ -266,6 +273,8 @@ public class PatternCreatePanel extends BaseToolWindow {
         flagFieldList.add(flagField);
         checkBoxList.add(boxGroup);
         userPromptPanel.add(flagRow);
+
+        flagInputRow.add(removeButton, BorderLayout.EAST);
 
         userPromptPanel.revalidate();
         userPromptPanel.repaint();
