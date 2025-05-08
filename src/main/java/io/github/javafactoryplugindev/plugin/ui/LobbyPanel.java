@@ -14,19 +14,12 @@ public class LobbyPanel extends JPanel {
         setAlignmentX(Component.CENTER_ALIGNMENT);
 
         add(Box.createVerticalStrut(30)); // Top spacing
-
-
-        Icon icon = IconLoader.getIcon("/META-INF/pluginIcon.svg", getClass());
-        JLabel iconLabel = new JLabel(icon);
-        iconLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 7, 0));
-
         JLabel title = new JLabel("JavaFactory Plugin");
         title.setFont(new Font("SansSerif", Font.BOLD, 20));
 
         JPanel titlePanel = new JPanel();
         titlePanel.setLayout(new BoxLayout(titlePanel, BoxLayout.X_AXIS));
         titlePanel.setOpaque(false);
-        titlePanel.add(iconLabel);
         titlePanel.add(Box.createHorizontalStrut(8)); // 아이콘과 제목 사이 여백
         titlePanel.add(title);
 
@@ -55,8 +48,10 @@ public class LobbyPanel extends JPanel {
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
         button.setMaximumSize(new Dimension(250, 40));
         button.setPreferredSize(new Dimension(250, 40));
+        button.setRolloverEnabled(true); // hover 상태 감지 활성화
         button.setFont(new Font("SansSerif", Font.PLAIN, 14));
         button.setFocusPainted(false); // 눌렀을 때 테두리 없음
+        button.setCursor(new Cursor(Cursor.HAND_CURSOR));
         button.setBorder(BorderFactory.createEmptyBorder(8, 20, 8, 20)); // 살짝 패딩
         button.addActionListener(e -> show(rootPanel, panelName));
         return button;
@@ -67,10 +62,11 @@ public class LobbyPanel extends JPanel {
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
         button.setMaximumSize(new Dimension(250, 40));
         button.setPreferredSize(new Dimension(250, 40));
+        button.setRolloverEnabled(true); // hover 상태 감지 활성화
         button.setFont(new Font("SansSerif", Font.PLAIN, 14));
         button.setFocusPainted(false);
+        button.setCursor(new Cursor(Cursor.HAND_CURSOR));
         button.setBorder(BorderFactory.createEmptyBorder(8, 20, 8, 20));
-
         button.addActionListener(e -> {
             try {
                 Desktop.getDesktop().browse(new URI("https://github.com/JavaFactoryPluginDev/javafactory-plugin/discussions"));
