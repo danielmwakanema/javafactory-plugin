@@ -123,7 +123,6 @@ public class DefaultPatternProvider {
                                 
                         Output Rules:
                         1. Output only raw `.java` code — **do not** include markdown or explanation.
-                        2. If you must assume data structure, base it strictly on the given sources.
                                                 
                         """,
                 """

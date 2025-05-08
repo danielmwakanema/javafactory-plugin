@@ -31,10 +31,12 @@ public class PatternCreatePanel extends BaseToolWindow {
     }
 
     private JTextField nameField;
-    private JTextArea goalArea;
-    private JTextArea rulesArea;
-    private JTextArea formatArea;
-    private JTextArea exampleArea;
+    private JScrollPane goalArea;
+    private JScrollPane rulesArea;
+    private JScrollPane formatArea;
+    private JScrollPane exampleArea;
+
+
 
     @Override
     public void initContent(JPanel content) {
@@ -126,15 +128,15 @@ public class PatternCreatePanel extends BaseToolWindow {
         JLabel sysLabel = new JLabel("📝 System Prompt Configuration");
         sysLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        goalArea = createTextArea("Goal");
-        rulesArea = createTextArea("Rules");
-        formatArea = createTextArea("Output Format");
-        exampleArea = createTextArea("Output Example");
+        goalArea = createTextAreaWithScroll("Goal");
+        rulesArea = createTextAreaWithScroll("Rules");
+        formatArea = createTextAreaWithScroll("Output Format");
+        exampleArea = createTextAreaWithScroll("Output Example");
 
-        goalArea.setText(PatternCreationPreview.goal());
-        rulesArea.setText(PatternCreationPreview.rules());
-        formatArea.setText(PatternCreationPreview.output());
-        exampleArea.setText(PatternCreationPreview.example());
+        JScrolPaneUtils.setAreaTxt(goalArea, PatternCreationPreview.goal());
+        JScrolPaneUtils.setAreaTxt(rulesArea, PatternCreationPreview.rules());
+        JScrolPaneUtils.setAreaTxt(formatArea, PatternCreationPreview.output());
+        JScrolPaneUtils.setAreaTxt(exampleArea, PatternCreationPreview.example());
 
         JButton previewButton = createSystemPromptButton(project);
         previewButton.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -196,6 +198,22 @@ public class PatternCreatePanel extends BaseToolWindow {
         section.add(userPreviewButton);
 
         return section;
+    }
+
+    private JScrollPane createTextAreaWithScroll(String title) {
+        JTextArea area = new JTextArea(5, 40);
+        area.setLineWrap(true); // 자동 줄바꿈
+        area.setWrapStyleWord(true); // 단어 단위 줄바꿈
+
+        area.setBorder(BorderFactory.createTitledBorder(title));
+
+        JScrollPane scrollPane = new JScrollPane(area);
+        scrollPane.setAlignmentX(Component.LEFT_ALIGNMENT);
+        scrollPane.setPreferredSize(new Dimension(0, 300)); // 스크롤 영역 크기
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+
+        return scrollPane;
     }
 
     private JTextArea createTextArea(String title) {
@@ -335,10 +353,10 @@ public class PatternCreatePanel extends BaseToolWindow {
 
     private SystemPromptContent toSystemPromptContent() {
         return new SystemPromptContent(
-                goalArea.getText().trim(),
-                rulesArea.getText().trim(),
-                formatArea.getText().trim(),
-                exampleArea.getText().trim()
+                JScrolPaneUtils.getAreaTxt(goalArea),
+                JScrolPaneUtils.getAreaTxt(rulesArea),
+                JScrolPaneUtils.getAreaTxt(formatArea),
+                JScrolPaneUtils.getAreaTxt(exampleArea)
         );
     }
 
