@@ -4,6 +4,7 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.fileEditor.FileDocumentManager;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.util.Computable;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VfsUtilCore;
@@ -35,14 +36,18 @@ public class FileUtils {
         VirtualFile vFile = psiFile.getVirtualFile();
         if (vFile == null) throw new IOException("VirtualFile is null");
 
-        // 🔍 최신 내용: Document에서 읽기
-        Document doc = FileDocumentManager.getInstance().getDocument(vFile);
-        if (doc != null) {
-            return doc.getText(); // 현재 열린 편집기 상의 내용까지 포함됨
-        }
-
-        // fallback: 저장된 파일에서 읽기
-        return VfsUtilCore.loadText(vFile);
+        // 🔒 ReadAction을 통해 스레드 안전하게 접근
+        return ApplicationManager.getApplication().runReadAction((Computable<String>) () -> {
+            Document doc = FileDocumentManager.getInstance().getDocument(vFile);
+            if (doc != null) {
+                return doc.getText(); // 수정 중인 문서 내용 포함
+            }
+            try {
+                return VfsUtilCore.loadText(vFile); // 저장된 파일 내용
+            } catch (IOException e) {
+                throw new RuntimeException("파일 읽기 실패: " + vFile.getPath(), e);
+            }
+        });
     }
 
     // 2. 새 파일을 생성하고 내용 쓰기 (경로까지 포함해서 생성)
