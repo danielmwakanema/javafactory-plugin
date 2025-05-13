@@ -3,6 +3,9 @@
 **JavaFactory** is an IntelliJ plugin that automates the generation of repetitive code in Java/Kotlin projects.  
 Using LLM-based automation, it enables developers to define reusable patterns and generate code accordingly.
 
+
+[Intellij Marketplace  Link](https://plugins.jetbrains.com/plugin/27246-javafactory)
+
 ## Key Features
 
 1. Register and manage custom code generation patterns
