@@ -73,3 +73,8 @@ Open the plugin settings and enter your API key.
 - [Collecting Referenced Classes](https://github.com/JavaFactoryPluginDev/javafactory-plugin/blob/master/docs/crawl_java_files.md)
 - [Managing Patterns](https://github.com/JavaFactoryPluginDev/javafactory-plugin/blob/master/docs/patterns.md)
 - [Usage examples](https://github.com/JavaFactoryPluginDev/javafactory-plugin/blob/master/docs/usage_example.md)
+
+
+- [Intellij Marketplace  Link](https://plugins.jetbrains.com/plugin/27246-javafactory)
+- [Ideas : Building an IntelliJ Code Generation Plugin with LLM](https://github.com/JavaFactoryPluginDev/javafactory-plugin/blob/master/docs/hackerNews/introduce.md)
+
