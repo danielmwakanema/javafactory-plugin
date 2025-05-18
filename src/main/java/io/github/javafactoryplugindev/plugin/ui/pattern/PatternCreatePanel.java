@@ -1,7 +1,6 @@
 package io.github.javafactoryplugindev.plugin.ui.pattern;
 
 
-
 import io.github.javafactoryplugindev.plugin.pattern.*;
 import io.github.javafactoryplugindev.plugin.ui.BaseToolWindow;
 import com.intellij.openapi.project.Project;
@@ -37,7 +36,6 @@ public class PatternCreatePanel extends BaseToolWindow {
     private JScrollPane exampleArea;
 
 
-
     @Override
     public void initContent(JPanel content) {
         content.setLayout(new BorderLayout());
@@ -63,7 +61,7 @@ public class PatternCreatePanel extends BaseToolWindow {
         panel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
 
-        JLabel title = new JLabel("🧩 Pattern Creation Panel");
+        JLabel title = new JLabel("✏️ Pattern Creation Panel");
         title.setFont(new Font("SansSerif", Font.BOLD, 14));
         title.setAlignmentX(Component.LEFT_ALIGNMENT);
         panel.add(title); //
@@ -363,7 +361,12 @@ public class PatternCreatePanel extends BaseToolWindow {
     private UserPromptContent toUserPromptContent() {
         List<UserPromptContent.UserPromptItem> items = new ArrayList<>();
         for (int i = 0; i < flagFieldList.size(); i++) {
-            String key = flagFieldList.get(i).getText().trim();
+
+            var flag = flagFieldList.get(i);
+            if(!flag.isValid())
+                continue;
+
+            String key = flag.getText().trim();
             List<ReferenceFlag> flags = new ArrayList<>();
             for (JCheckBox cb : checkBoxList.get(i)) {
                 if (cb.isSelected()) {
@@ -432,19 +435,19 @@ public class PatternCreatePanel extends BaseToolWindow {
             }
 
             // 4. generationType
-            if (getSelectedGenerationType() == GenerationType.IMPLEMENTATION && !hasInterfaceFlag()) {
+            if (getSelectedGenerationType() == GenerationType.IMPLEMENTATION && !hasInterfaceFlag(user)) {
                 int confirm = JOptionPane.showConfirmDialog(this,
                         "This pattern targets IMPLEMENTATION generation,\n" +
                                 "but no INTERFACE item is specified in the user prompt\n This may cause issues during reference resolution.\n" +
                                 "Please explicitly define name: INTERFACE, value: TARGET_API \n" +
                                 "Do you still want to save?",
-                        "⚠️ No API Value", JOptionPane.YES_NO_OPTION);
+                        "⚠️ NO API INTERFACE", JOptionPane.YES_NO_OPTION);
                 if (confirm != JOptionPane.YES_OPTION) return;
             }
 
-            if ((getSelectedGenerationType() == GenerationType.TEST || getSelectedGenerationType() == GenerationType.FIXTURE) && !hasImplementationFlag()) {
+            if ((getSelectedGenerationType() == GenerationType.TEST || getSelectedGenerationType() == GenerationType.FIXTURE) && !hasImplementationFlag(user)) {
                 int confirm = JOptionPane.showConfirmDialog(this,
-                        "This pattern targets" + getSelectedGenerationType().name() + "generation, but no IMPLEMENTATION item is specified in the user prompt.\n This may cause issues during reference resolution\n" +
+                        "This pattern targets" + getSelectedGenerationType().name() + " generation, but no IMPLEMENTATION item is specified in the user prompt.\n This may cause issues during reference resolution\n" +
                                 "Please explicitly define name: IMPLEMENTATION, value: TARGET_API \n" +
                                 "Do you still want to save?",
                         "⚠️ NO Implementation value", JOptionPane.YES_NO_OPTION);
@@ -481,12 +484,23 @@ public class PatternCreatePanel extends BaseToolWindow {
         return GenerationType.NONE;
     }
 
-    private boolean hasInterfaceFlag() {
-        return flagFieldList.stream().anyMatch(e -> e.getText().trim().equalsIgnoreCase("INTERFACE"));
+    private boolean hasInterfaceFlag(UserPromptContent user) {
+        Set<ReferenceFlag> flags = new HashSet<>();
+        for (UserPromptContent.UserPromptItem item : user.getItems()) {
+            flags.addAll(item.getFlags());
+        }
+
+        return flags.contains(ReferenceFlag.TARGET_API);
+
     }
 
-    private boolean hasImplementationFlag() {
-        return flagFieldList.stream().anyMatch(e -> e.getText().trim().equalsIgnoreCase("IMPLEMENTATION"));
+    private boolean hasImplementationFlag(UserPromptContent user) {
+        Set<ReferenceFlag> flags = new HashSet<>();
+
+        for (UserPromptContent.UserPromptItem item : user.getItems()) {
+            flags.addAll(item.getFlags());
+        }
+        return flags.contains(ReferenceFlag.TARGET_DEFAULT_API_IMPL);
     }
 
     // ✅ 버튼 테스트용 샘플 메서드들

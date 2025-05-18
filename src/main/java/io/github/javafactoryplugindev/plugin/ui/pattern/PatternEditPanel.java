@@ -288,17 +288,17 @@ public class PatternEditPanel extends BaseToolWindow {
             }
 
 
-            if (getSelectedGenerationType() == GenerationType.IMPLEMENTATION && !hasInterfaceFlag()) {
+            if (getSelectedGenerationType() == GenerationType.IMPLEMENTATION && !hasInterfaceFlag(user)) {
                 int confirm = JOptionPane.showConfirmDialog(this,
                         "This pattern targets IMPLEMENTATION generation,\n" +
                                 "but no INTERFACE item is specified in the user prompt\n This may cause issues during reference resolution.\n" +
                                 "Please explicitly define name: INTERFACE, value: TARGET_API \n" +
                                 "Do you still want to save?",
-                        "⚠️ API 항목 없음", JOptionPane.YES_NO_OPTION);
+                        "⚠️ NO API INTERFACE ", JOptionPane.YES_NO_OPTION);
                 if (confirm != JOptionPane.YES_OPTION) return;
             }
 
-            if ((getSelectedGenerationType() == GenerationType.TEST || getSelectedGenerationType() == GenerationType.FIXTURE) && !hasImplementationFlag()) {
+            if ((getSelectedGenerationType() == GenerationType.TEST || getSelectedGenerationType() == GenerationType.FIXTURE) && !hasImplementationFlag(user)) {
                 int confirm = JOptionPane.showConfirmDialog(this,
                         "This pattern targets" + getSelectedGenerationType().name() + "generation, but no IMPLEMENTATION item is specified in the user prompt.\n This may cause issues during reference resolution\n" +
                                 "Please explicitly define name: IMPLEMENTATION, value: TARGET_API \n" +
@@ -330,12 +330,23 @@ public class PatternEditPanel extends BaseToolWindow {
         return GenerationType.NONE;
     }
 
-    private boolean hasInterfaceFlag() {
-        return flagFieldList.stream().anyMatch(e -> e.getText().trim().equalsIgnoreCase("TARGET_API"));
+    private boolean hasInterfaceFlag(UserPromptContent user) {
+        Set<ReferenceFlag> flags = new HashSet<>();
+        for (UserPromptContent.UserPromptItem item : user.getItems()) {
+            flags.addAll(item.getFlags());
+        }
+
+        return flags.contains(ReferenceFlag.TARGET_API);
+
     }
 
-    private boolean hasImplementationFlag() {
-        return flagFieldList.stream().anyMatch(e -> e.getText().trim().equalsIgnoreCase("TARGET_DEFAULT_API_IMPL"));
+    private boolean hasImplementationFlag(UserPromptContent user) {
+        Set<ReferenceFlag> flags = new HashSet<>();
+
+        for (UserPromptContent.UserPromptItem item : user.getItems()) {
+            flags.addAll(item.getFlags());
+        }
+        return flags.contains(ReferenceFlag.TARGET_DEFAULT_API_IMPL);
     }
 
     private JPanel createGenerationTypeSection() {
@@ -399,7 +410,12 @@ public class PatternEditPanel extends BaseToolWindow {
     private UserPromptContent toUserPromptContent() {
         List<UserPromptContent.UserPromptItem> items = new ArrayList<>();
         for (int i = 0; i < flagFieldList.size(); i++) {
-            String key = flagFieldList.get(i).getText().trim();
+
+            var flag = flagFieldList.get(i);
+            if (!flag.isValid())
+                continue;
+
+            String key = flag.getText().trim();
             List<ReferenceFlag> flags = new ArrayList<>();
             for (JCheckBox cb : checkBoxList.get(i)) {
                 if (cb.isSelected()) {
