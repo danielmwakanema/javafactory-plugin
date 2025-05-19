@@ -36,7 +36,10 @@ JavaFactory는 다음 두 가지 구조로 동작합니다:
 
 ### 1. 작업 단위를 패턴으로 정의합니다
 
-[![pattern 관리 데모](docs/images/manage_pattern_thumnail.png)](https://www.youtube.com/watch?v=kqHGkCpoQz8)
+<a href="https://www.youtube.com/watch?v=kqHGkCpoQz8" target="_blank">
+  <img src="docs/images/manage_pattern_thumnail.png" width="600"/>
+</a>
+
 
 <br/>
 
@@ -57,7 +60,7 @@ JavaFactory는 다음 두 가지 구조로 동작합니다:
 
 <br/>
 
-![combined_horizontal.png](docs/images/combined_horizontal.png)
+<img src="docs/images/combined_horizontal.png" width="600"/>
 
 <br/>
 
@@ -70,7 +73,7 @@ JavaFactory는 다음 두 가지 구조로 동작합니다:
 
 > value 값이 어떻게 결정되는지는 `어노테이션 수집 규칙`에서 설명합니다.
 
-![user1.png](docs/images/user1.png)
+<img src="docs/images/user1.png" width="600"/>
 
 <br/><br/>
 
