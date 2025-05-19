@@ -22,7 +22,7 @@ JavaFactory는 다음 두 가지 구조로 동작합니다:
 
 
 
-##  Demo : 400 Lines in 20s. All test passed
+## Demo: 400 Lines in 20s. All tests passed
 > 아래 데모는 400줄의 코드가 생성되고, 모든 테스트를 통과한 예시입니다:
 
 <a href="https://www.youtube.com/watch?v=ReBCXKOpW3M" target="_blank">
@@ -68,10 +68,10 @@ JavaFactory는 다음 두 가지 구조로 동작합니다:
 
 ```text
 << {role_name1 } >>
-{{ source of classes }}
+{{ class source }}
 
 << {role_name1 } >>
-{{ source of classes }}
+{{ class source }}
 
 ....
 ```
@@ -79,8 +79,7 @@ JavaFactory는 다음 두 가지 구조로 동작합니다:
 
 #### 패턴 편집하기.
 
-각 작업에 맞게 system prompt / user prompt 를 설정할 수 있습니다.
-해당 작업에 대한 ui 기능을 제공합니다. 
+각 작업에 맞게 System Prompt와 User Prompt를 설정할 수 있으며, 이를 위한 전용 UI를 제공합니다.
 
 1. edit system prompt configuration 
 ![system1.png](docs/images/system1.png)
@@ -90,6 +89,7 @@ JavaFactory는 다음 두 가지 구조로 동작합니다:
 2. edit user prompt configuration 
 
 ![user1.png](docs/images/user1.png)
+
 > 어떤 클래스가 유저프롬프트에 속하게 할 지 결정합니다. 
 
 
