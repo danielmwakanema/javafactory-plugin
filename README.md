@@ -48,32 +48,50 @@ JavaFactory는 다음 두 가지 구조로 동작합니다:
 패턴은 아래 두 파트로 구성됩니다:
 
 #### System Prompt
- - Goal: 작업 목적
- - Rules: 적용할 규칙
- - Output: 결과물 포맷
- - Example: 전형적인 예시 코드
+
+
+```plaintext
+## Goal
+{{ user_defined_goal }}
+
+## Rules
+{{ user_defined_rules }}
+
+## Output
+{{ expected_format }}
+
+## Example
+{{ typical_example_code }}
+```
 
 #### User Prompt
- - key-value 형태
-  - user prompt 에 포함시킬 클래스 지정
 
+```text
+<< {role_name1 } >>
+{{ source of classes }}
 
-<img src="docs/images/system1.png" width="500"/>
+<< {role_name1 } >>
+{{ source of classes }}
 
-> 작업 별 Goal, Rules, Output, Example 지정 가능 
-
+....
+```
 <br/>
 
-#### User Prompt
+#### 패턴 편집하기.
 
+각 작업에 맞게 system prompt / user prompt 를 설정할 수 있습니다.
+해당 작업에 대한 ui 기능을 제공합니다. 
 
+1. edit system prompt configuration 
+![system1.png](docs/images/system1.png)
 
-유저 프롬프트 항목에 어떤 소스를 포함시킬지를 선택할 수 있습니다.
-아래는 유저 프롬프트의 예시입니다.
+> Goal, Rules, Output, Example 을 커스텀이 가능합니다. 
 
-> value 값이 어떻게 결정되는지는 `어노테이션 수집 규칙`에서 설명합니다.
+2. edit user prompt configuration 
 
-<img src="docs/images/user1.png" width="500"/>
+![user1.png](docs/images/user1.png)
+> 어떤 클래스가 유저프롬프트에 속하게 할 지 결정합니다. 
+
 
 <br/>
 
