@@ -11,6 +11,7 @@ JavaFactory는 다음 두 가지 구조로 동작합니다:
 한 번 정의한 규칙은 반복적으로 재사용할 수 있으며,  
 구현체, 테스트, 픽스처 등 다양한 코드생성을 패턴으로 생성할 수 있습니다.
 
+<br/><br/>
 
 - 🔗 [JetBrains Marketplace](https://plugins.jetbrains.com/plugin/27246-javafactory)
 - 📘  [사용법 살펴보기.](docs/how-to-use.md)
@@ -18,11 +19,14 @@ JavaFactory는 다음 두 가지 구조로 동작합니다:
 
 > 아래 데모는 400줄의 코드가 생성되고, 모든 테스트를 통과한 예시입니다:
 
+<br/><br/>
+
 ##  Demo : 400 Lines in 20s. All test passed 
 
 [![demo: 400 lines in 20s, all test passed](docs/images/demo_thumnail.png)](https://www.youtube.com/watch?v=ReBCXKOpW3M)
 
 
+<br/><br/>
 
 ## 핵심 기능들
 
@@ -48,6 +52,7 @@ JavaFactory는 다음 두 가지 구조로 동작합니다:
 
 ![combined_horizontal.png](docs/images/combined_horizontal.png)
 
+<br/><br/>
 
 #### User Prompt
 
@@ -60,6 +65,7 @@ JavaFactory는 다음 두 가지 구조로 동작합니다:
 
 ![user1.png](docs/images/user1.png)
 
+<br/><br/>
 
 ## 2. 어노테이션 수집 규칙
 
@@ -82,6 +88,7 @@ JavaFactory는 다음 두 가지 구조로 동작합니다:
 
 ---
 
+<br/><br/>
 
 
 ## 이런 사람에게 추천합니다
@@ -90,6 +97,7 @@ JavaFactory는 다음 두 가지 구조로 동작합니다:
 
 - 코드가 예측 불가능하거나, 유지보수가 어려웠던 경험이 있다면
 - 단순한 생성이 아니라 **작업 단위와 참조 구조를 직접 통제**하고 싶은 분
+
 
 ### 정해진 구조에서 반복적인 개발을 많이 하는 분
 
