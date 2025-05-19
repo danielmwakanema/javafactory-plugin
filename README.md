@@ -26,8 +26,9 @@ JavaFactory는 다음 두 가지 구조로 동작합니다:
 ##  Demo : 400 Lines in 20s. All test passed
 > 아래 데모는 400줄의 코드가 생성되고, 모든 테스트를 통과한 예시입니다:
 
-[![demo: 400 lines in 20s, all test passed](docs/images/demo_thumnail.png)](https://www.youtube.com/watch?v=ReBCXKOpW3M)
-
+<a href="https://www.youtube.com/watch?v=ReBCXKOpW3M" target="_blank">
+  <img src="docs/images/demo_thumnail.png" width="600"/>
+</a>
 
 <br/>
 
