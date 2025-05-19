@@ -1,7 +1,7 @@
-# JavaFactory
-
 https://github.com/user-attachments/assets/31586a5e-a70c-4ca7-aae1-3f177767420a
 
+
+# JavaFactory
 
 **JavaFactory**는 LLM을 이용해 반복적인 Java 코드를 자동 생성하는 도구입니다.  
 작업 단위의 규칙과 참조 대상을 명확히 정의함으로써, 기존 AI 코드 제너레이터보다 예측 가능하고 안정적인 결과를 생성을 목표로 합니다.
@@ -20,11 +20,11 @@ JavaFactory는 다음 두 가지 구조로 동작합니다:
 - 📘  [사용법 살펴보기.](docs/how-to-use.md)
 - 🛠 설치: IntelliJ > Settings > Plugins > 검색: `JavaFactory`
 
-> 아래 데모는 400줄의 코드가 생성되고, 모든 테스트를 통과한 예시입니다:
 
 <br/><br/>
 
 ##  Demo : 400 Lines in 20s. All test passed
+> 아래 데모는 400줄의 코드가 생성되고, 모든 테스트를 통과한 예시입니다:
 
 [![demo: 400 lines in 20s, all test passed](docs/images/demo_thumnail.png)](https://www.youtube.com/watch?v=ReBCXKOpW3M)
 
