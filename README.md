@@ -14,14 +14,14 @@ JavaFactory는 다음 두 가지 구조로 동작합니다:
 한 번 정의한 규칙은 반복적으로 재사용할 수 있으며,  
 구현체, 테스트, 픽스처 등 다양한 코드생성을 패턴으로 생성할 수 있습니다.
 
-<br/><br/>
+
 
 - 🔗 [JetBrains Marketplace](https://plugins.jetbrains.com/plugin/27246-javafactory)
 - 📘  [사용법 살펴보기.](docs/how-to-use.md)
 - 🛠 설치: IntelliJ > Settings > Plugins > 검색: `JavaFactory`
 
 
-<br/><br/>
+<br/>
 
 ##  Demo : 400 Lines in 20s. All test passed
 > 아래 데모는 400줄의 코드가 생성되고, 모든 테스트를 통과한 예시입니다:
@@ -29,7 +29,7 @@ JavaFactory는 다음 두 가지 구조로 동작합니다:
 [![demo: 400 lines in 20s, all test passed](docs/images/demo_thumnail.png)](https://www.youtube.com/watch?v=ReBCXKOpW3M)
 
 
-<br/><br/>
+<br/>
 
 ## 핵심 기능들
 
@@ -37,25 +37,28 @@ JavaFactory는 다음 두 가지 구조로 동작합니다:
 
 [![pattern 관리 데모](docs/images/manage_pattern_thumnail.png)](https://www.youtube.com/watch?v=kqHGkCpoQz8)
 
+<br/>
+
 반복되는 작업은 하나의 `패턴`으로 정의할 수 있습니다.  
 패턴은 "무엇을 어떻게 생성할지", "어떤 클래스를 참조할지"를 명확히 설정합니다.
 
 패턴은 아래 두 파트로 구성됩니다:
 
-- **System Prompt**
-    - Goal: 작업 목적
-    - Rules: 적용할 규칙
-    - Output: 결과물 포맷
-    - Example: 전형적인 예시 코드
+#### System Prompt
+ - Goal: 작업 목적
+ - Rules: 적용할 규칙
+ - Output: 결과물 포맷
+ - Example: 전형적인 예시 코드
 
-- **User Prompt**
-    - key-value 형태
-    - user prompt 에 포함시킬 클래스 지정
+#### User Prompt
+ - key-value 형태
+  - user prompt 에 포함시킬 클래스 지정
 
+<br/>
 
 ![combined_horizontal.png](docs/images/combined_horizontal.png)
 
-<br/><br/>
+<br/>
 
 #### User Prompt
 
