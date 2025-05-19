@@ -26,9 +26,14 @@
 
 
 
-## 데모 영상
+##  demo : 400 lines in 20s, all test passed 
 
 [![demo: 400 lines in 20s, all test passed](docs/images/demo_thumnail.png)](https://www.youtube.com/watch?v=ReBCXKOpW3M)
+
+[![Video Label](http://img.youtube.com/vi/ReBCXKOpW3M/0.jpg)](https://youtu.be/ReBCXKOpW3M)
+
+![](http://markdown-videos-api.jorgenkh.no/youtube/8lGpZkjnkt4)](https://youtu.be/8lGpZkjnkt4)
+
 
 
 ## 핵심 기능들
@@ -36,7 +41,8 @@
 
 ### 1. 패턴을 정의.
 
-[영상]
+#### pattern management - 클릭 시, 유튜브로 이동합니다. 
+
 
 
 
