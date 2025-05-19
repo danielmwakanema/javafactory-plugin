@@ -1,126 +1,145 @@
-# JavaFactory IntelliJ Plugin
-
-**JavaFactory** is an IntelliJ plugin that automates the generation of repetitive code in Java/Kotlin projects.  
-Using LLM-based automation, it enables developers to define reusable patterns and generate code accordingly.
+https://github.com/user-attachments/assets/31586a5e-a70c-4ca7-aae1-3f177767420a
 
 
-gpt-4o can generate 200–300 lines of code in 30 seconds,
-and you only need to spend 30–50 seconds reviewing it to decide if it's ready to commit
+# JavaFactory
 
-If you follow the guide and create a well-structured prompt set as `Pattern`,
-it can boost your productivity.
+JavaFactory is a tool that uses LLMs to automatically generate repetitive Java code.
+By clearly defining task-level rules and reference targets, it produces results that are more predictable and stable than those of traditional AI code generators.
+JavaFactory operates based on two core components:
 
-[Intellij Marketplace  Link](https://plugins.jetbrains.com/plugin/27246-javafactory)
+Pattern Definition: Define each unit of work in natural language (e.g., test generation, implementation generation, etc.)
+
+Annotation-Based Reference Collection: Explicitly specify the required classes using annotations.
+
+Once defined, these patterns can be reused repeatedly to generate various types of code — such as implementations, tests, and fixtures.
+- 🔗 [JetBrains Marketplace](https://plugins.jetbrains.com/plugin/27246-javafactory)
+- 📘  [How to use.](docs/how-to-use.md)
+- 🛠 Install: IntelliJ > Settings > Plugins > Search: `JavaFactory`
+
+
+
+## Demo: 400 Lines in 20s. All tests passed
+> The following demo shows an example where 400 lines of code were generated, and all tests passed:
+
+<a href="https://www.youtube.com/watch?v=ReBCXKOpW3M" target="_blank">
+  <img src="docs/images/demo_thumnail.png" width="500"/>
+</a>
+
+<br/>
 
 ## Key Features
 
-1. Register and manage custom code generation patterns
-2. Collect reference source code for prompt generation (via `@JavaFactory` annotations)
+### 1. Define units of work as patterns
+
+<a href="https://www.youtube.com/watch?v=kqHGkCpoQz8" target="_blank">
+  <img src="docs/images/manage_pattern_thumnail.png" width="500"/>
+</a>
+
+
+
+
+Repetitive tasks can be defined as a single pattern.
+A pattern clearly specifies what to generate, how to generate it, and which classes to reference.
+
+A pattern consists of two main parts:
+
+#### System Prompt
+
+
+```plaintext
+## Goal
+{{ user_defined_goal }}
+
+## Rules
+{{ user_defined_rules }}
+
+## Output
+{{ expected_format }}
+
+## Example
+{{ typical_example_code }}
+```
+
+#### User Prompt
+
+```text
+<< {role_name1 } >>
+{{ class source }}
+
+<< {role_name1 } >>
+{{ class source }}
+
+....
+```
+<br/>
+
+#### Edit Patterns
+You can configure the System Prompt and User Prompt for each task,
+and JavaFactory provides a dedicated UI for this purpose.
+
+1. Edit system prompt configuration 
+
+<img src="docs/images/system1.png" width="500"/>
+
+> Goal, Rules, Output, Example can be customized 
+
+2. Edit user prompt configuration
+
+<img src="docs/images/user1.png" width="500"/>
+
+> Determine which classes should be included in the user prompt.
+
+
+<br/>
+
+## 2. Annotation-Based Reference Collection
+
+The classes to be used in a pattern are explicitly scoped using annotations.
+When a class is annotated with a specific role, it will be automatically included if it matches the reference targets defined in the pattern.
+
+Annotations are categorized into two main types:
+
+- `@JavaFactoryData`
+    - Recursively collects the classes specified in `referencedData`.
+    - Example: Domain models, entities, and other data-related classes.
+
+- `@JavaFactoryApi`
+    - Collects only one level of `referencedApi`.
+    -  Optionally allows specifying the implementation, test, and fixture classes for the API.
+    - Example: API interfaces such as Reader, Writer, Validator.
+
+You can explicitly control which classes are needed for code generation and how far the reference collection should go.
+
 
 ---
 
-## Demo
-
-### Generate Implementation & Test Code
-![image](docs/example_gif1.gif)
-
-### Generate Implementation Code Only
-![image](docs/example_gif2.gif)
-
-JavaFactory can automatically generate:
-
-- Simple implementations
-- Corresponding test classes
-- Auxiliary code such as mappers and utility classes
-
-All generation logic is customizable based on your defined patterns.
-
----
-
-## How to Use
-
-### 1. Add the Annotation Dependency
-
-**Maven:**
-```xml
-<dependency>
-    <groupId>io.github.javafactoryplugindev</groupId>
-    <artifactId>javafactory-annotation</artifactId>
-    <version>0.1.1</version>
-</dependency>
-```
-
-**Gradle:**
-```groovy
-implementation 'io.github.javafactoryplugindev:javafactory-annotation:0.1.1'
-```
-
-### 2. Register Your OpenAI API Key
-
-Open the plugin settings and enter your API key.
-
-![image](docs/openAi_key_input.png)
-
-- The API key is Base64-encoded and stored as an XML file under the `.idea/` directory.
-- Make sure to **add `.idea/` to your `.gitignore`:**
-
-```
-.idea
-```
-
-### 3. Right-click in the editor and select **“Code Generation”**
-
-![image](docs/generation_btn.png)
-
-additional details about setting is [below]()!
-
----
-
-## Additional Documentation
-
-- [Collecting Referenced Classes](https://github.com/JavaFactoryPluginDev/javafactory-plugin/blob/master/docs/crawl_java_files.md)
-- [Managing Patterns](https://github.com/JavaFactoryPluginDev/javafactory-plugin/blob/master/docs/patterns.md)
-- [Usage examples](https://github.com/JavaFactoryPluginDev/javafactory-plugin/blob/master/docs/usage_example.md)
+<br/>
 
 
-- [Intellij Marketplace  Link](https://plugins.jetbrains.com/plugin/27246-javafactory)
-- [Ideas : Building an IntelliJ Code Generation Plugin with LLM](https://github.com/JavaFactoryPluginDev/javafactory-plugin/blob/master/docs/hackerNews/introduce.md)
+## Recommended For
+
+### Those who have been disappointed with traditional AI code generators
+
+- If you've experienced unpredictable results or maintainability issues on former code generation 
+- If you want more than just simple generation — you want to explicitly control the task unit and reference structure
 
 
----
+### Developers working in repetitive, structured environments
 
-### Detailed configuration 
+- For example: Environments with repeating patterns like layered architecture
+- Tasks like the following can be automated repeatedly after defining the rule once:
 
-#### mark references for compromising user prompt
+1. dao-repository-implementation
+2. dao-repository-test
+3. dao-repository-fixture
+4. domain-api-implementation
+5. domain-api-test
+6. domain-api-fixture
 
-
-When generating a domain API implementation, the user prompt must include the API source and related data specs to produce functioning code.
-
-To enable the plugin to gather the necessary source files for each task, I defined custom annotations. During plugin execution, the plugin collects the required classes for each task based on these annotations.
-
-
-![reference_ruls.png](docs/hackerNews/reference_ruls.png)
-
-You can find the exact collection rules at the link below:
-Link: Reference Annotation Guide(https://github.com/JavaFactoryPluginDev/javafactory-plugin/blob/master/docs/crawl_java_files.md)
+> In such structures, I recommend designing the red boxes manually, and letting JavaFactory automate the blue boxes.
 
 
+<img src="docs/hackerNews/layered.png" width="700"/>
 
-#### Define your repetitive tasks using natural language.
-
-Since each developer has their own preferences and priorities, the definition of rules must be customizable.
-
-For example, I prefer to keep tests in the infra layer as close to pure Java as possible. However, someone else might find such a rule excessive. Therefore, customization of these rules must be supported.
-
-
-![custom_patterns.png](docs/hackerNews/custom_patterns.png)
-
-
-#### set patternName in your interface and run 
-
-![run_patterns.png](docs/images/run_patterns.png)
-
-
-once you set pattens and annotation, set `@JavaFactoryPattern( value = "pattern_name" )` or `@JavaFactoryPattern( value = ["pattern_name1","pattern_name2" ] )`.
-right-click your file and run generation.
+<br/>
 
