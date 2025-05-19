@@ -60,7 +60,11 @@ JavaFactory는 다음 두 가지 구조로 동작합니다:
 
 <br/>
 
-<img src="docs/images/combined_horizontal.png" width="600"/>
+<img src="docs/images/system1.png" width="600"/>
+
+
+<img src="docs/images/system2.png" width="600"/>
+
 
 <br/>
 
