@@ -21,13 +21,12 @@ JavaFactory는 다음 두 가지 구조로 동작합니다:
 - 🛠 설치: IntelliJ > Settings > Plugins > 검색: `JavaFactory`
 
 
-<br/>
 
 ##  Demo : 400 Lines in 20s. All test passed
 > 아래 데모는 400줄의 코드가 생성되고, 모든 테스트를 통과한 예시입니다:
 
 <a href="https://www.youtube.com/watch?v=ReBCXKOpW3M" target="_blank">
-  <img src="docs/images/demo_thumnail.png" width="600"/>
+  <img src="docs/images/demo_thumnail.png" width="500"/>
 </a>
 
 <br/>
@@ -37,7 +36,7 @@ JavaFactory는 다음 두 가지 구조로 동작합니다:
 ### 1. 작업 단위를 패턴으로 정의합니다
 
 <a href="https://www.youtube.com/watch?v=kqHGkCpoQz8" target="_blank">
-  <img src="docs/images/manage_pattern_thumnail.png" width="600"/>
+  <img src="docs/images/manage_pattern_thumnail.png" width="500"/>
 </a>
 
 
@@ -58,13 +57,10 @@ JavaFactory는 다음 두 가지 구조로 동작합니다:
  - key-value 형태
   - user prompt 에 포함시킬 클래스 지정
 
-<br/>
 
-<img src="docs/images/system1.png" width="600"/>
+<img src="docs/images/system1.png" width="500"/>
 
-
-<img src="docs/images/system2.png" width="600"/>
-
+> 작업 별 Goal, Rules, Output, Example 지정 가능 
 
 <br/>
 
@@ -77,9 +73,9 @@ JavaFactory는 다음 두 가지 구조로 동작합니다:
 
 > value 값이 어떻게 결정되는지는 `어노테이션 수집 규칙`에서 설명합니다.
 
-<img src="docs/images/user1.png" width="600"/>
+<img src="docs/images/user1.png" width="500"/>
 
-<br/><br/>
+<br/>
 
 ## 2. 어노테이션 수집 규칙
 
@@ -102,7 +98,7 @@ JavaFactory는 다음 두 가지 구조로 동작합니다:
 
 ---
 
-<br/><br/>
+<br/>
 
 
 ## 이런 사람에게 추천합니다
@@ -129,4 +125,4 @@ JavaFactory는 다음 두 가지 구조로 동작합니다:
 > “파란 박스”는 JavaFactory로 자동화 시도를 추천합니다
 
 
-<img src="docs/hackerNews/layered.png" width="800"/>
+<img src="docs/hackerNews/layered.png" width="700"/>
