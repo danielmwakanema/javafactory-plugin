@@ -28,8 +28,7 @@
 
 ## 데모 영상
 
-
-
+[![demo: 400 lines in 20s, all test passed](docs/images/demo_thumnail.png)](https://www.youtube.com/watch?v=ReBCXKOpW3M)
 
 
 ## 핵심 기능들
@@ -39,25 +38,6 @@
 
 [영상]
 
-/*
-시나리오.
-
--> to automate coding, you need to set patterns 
-
--> in this scenario, we make this style of test code 
-
--> / *
-1. pure java
-2. inject Fake Obj
-3. test both success and failed cases .
-*/
-
--> you need to set pattern in patterns panel 
-
--> set what classes you reference in your user prompt 
-
--> do run 
-*/ 
 
 
 당신은 당신의 코드 작업에 반복되는 작업을 `패턴`이라는 명칭으로 정의 할 수 있습니다.
@@ -92,15 +72,6 @@
 
 
 ## 2. 어노테이션 수집 규칙
-
-/*
-시나리오.
-
--> to automate coding, you need to set annotations on your classes
--> suppose that you need to ref data specs and it's implementation and 하위 레포지토리 to make new test code
--> okay then you need to set annotation on each classes
-
-*/
 
 
 패턴에서 사용할 클래스들은 어노테이션을 통해 명시적으로 범위가 제공됩니다.
