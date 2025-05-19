@@ -124,7 +124,5 @@ JavaFactory는 다음 두 가지 구조로 동작합니다:
 > 구조상 “빨간 박스”만 사람이 설계하고,  
 > “파란 박스”는 JavaFactory로 자동화 시도를 추천합니다
 
-![layered.png](docs/hackerNews/layered.png)
 
-
-
+<img src="docs/hackerNews/layered.png" width="800"/>
