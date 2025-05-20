@@ -4,12 +4,12 @@ https://github.com/user-attachments/assets/31586a5e-a70c-4ca7-aae1-3f177767420a
 # JavaFactory
 
 JavaFactory is a tool that uses LLMs to automatically generate repetitive Java code.
-By clearly defining task-level rules and reference targets, it produces results that are more predictable and stable than those of traditional AI code generators.
+It produces results that are more predictable and stable than those of traditional AI code generators.
 JavaFactory operates based on two core components:
 
-Pattern Definition: Define each unit of work in natural language (e.g., test generation, implementation generation, etc.)
+- Pattern Definition: Define each unit of work in natural language (e.g., test generation, implementation generation, etc.)
 
-Annotation-Based Reference Collection: Explicitly specify the required classes using annotations.
+- Annotation-Based Reference Collection: Explicitly specify the required classes using annotations.
 
 Once defined, these patterns can be reused repeatedly to generate various types of code — such as implementations, tests, and fixtures.
 - 🔗 [JetBrains Marketplace](https://plugins.jetbrains.com/plugin/27246-javafactory)
